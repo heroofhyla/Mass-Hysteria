@@ -47,10 +47,12 @@ public class GameScreen extends JPanel{
 		
 		//Don't want camera to show stuff past the edges of the screen
 		px_xOffset = Math.max(0, px_xOffset);
-		px_xOffset = Math.min(Game.currentMap().px_xSize() - px_DEFAULT_SCREEN_WIDTH, px_xOffset);
+		//Not sure why it's letting me center 10 pixels past the edge of the screen to the right and bottom, so stuck this -10 in to get around it
+		//Will try to come up with a less awful solution later
+		px_xOffset = Math.min(Game.currentMap().px_xSize() - px_DEFAULT_SCREEN_WIDTH - 10, px_xOffset);
 		px_yOffset = Math.max(0, px_yOffset);
-		px_yOffset = Math.min(Game.currentMap().px_ySize() - px_DEFAULT_SCREEN_HEIGHT, px_yOffset);
-		System.out.println("Recentering view " + px_xOffset + ", " + px_yOffset);
+		px_yOffset = Math.min(Game.currentMap().px_ySize() - px_DEFAULT_SCREEN_HEIGHT - 10, px_yOffset);
+		//System.out.println("Recentering view " + px_xOffset + ", " + px_yOffset);
 	}
 	
 	public void panScreenToward_abspx(int abspx_x, int abspx_y, int px_speed){
@@ -75,6 +77,7 @@ public class GameScreen extends JPanel{
 		centerScreenAt_abspx(px_xDelta + px_xOffset, px_yDelta + px_yOffset);
 	}
 	
+	//moves screen x, y pixels
 	public void panScreen_abspx(int abspx_x, int abspx_y){
 		centerScreenAt_abspx(abspx_x + px_xOffset + px_DEFAULT_SCREEN_WIDTH/2, abspx_y + px_yOffset + px_DEFAULT_SCREEN_HEIGHT/2);
 	}
@@ -91,10 +94,12 @@ public class GameScreen extends JPanel{
 		super.paint(g);
 		g.setColor(Color.white);
 		g.fillRect(0, 0, px_DEFAULT_SCREEN_WIDTH, px_DEFAULT_SCREEN_HEIGHT);
+		Game.currentMap().draw(g);
 		for (Entity e: Game.gameEntities()){
 			e.draw(g);
 		}
-		g.setColor(Color.red);
-		g.fillRect(Game.logicController().relpx_mousePosition().x(), Game.logicController().relpx_mousePosition().y(), 2, 2);
+		Game.leader().draw(g);
+		//g.setColor(Color.red);
+		//g.fillRect(Game.logicController().relpx_mousePosition().x(), Game.logicController().relpx_mousePosition().y(), 2, 2);
 	}
 }

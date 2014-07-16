@@ -20,7 +20,11 @@ public class GameWindow extends JFrame{
 		this.pack();
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+	}
+	
+	public void init(){
 		this.setVisible(true);
+
 	}
 	
 	public GameScreen screen(){
