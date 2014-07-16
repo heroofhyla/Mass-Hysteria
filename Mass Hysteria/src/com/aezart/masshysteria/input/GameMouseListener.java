@@ -9,8 +9,8 @@ public class GameMouseListener implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent clickEvent) {
-		System.out.println("Mouse click at " + clickEvent.getX() + ", " + clickEvent.getY());
-		Game.logicController().alertClick(clickEvent);
+		//System.out.println("Mouse click at " + clickEvent.getX() + ", " + clickEvent.getY());
+		//Game.logicController().alertClick(clickEvent);
 	}
 
 	@Override

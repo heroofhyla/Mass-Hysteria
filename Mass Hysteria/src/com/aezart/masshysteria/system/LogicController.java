@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import com.aezart.masshysteria.entity.Entity;
+import com.aezart.masshysteria.entity.Wanderer;
 
 public class LogicController implements Runnable{
 	boolean running;
@@ -12,6 +13,7 @@ public class LogicController implements Runnable{
 	boolean leftHeld = false;
 	boolean rightHeld = false;
 	GameCoordinate relpx_mousePosition = new GameCoordinate(0,0);
+	GameCoordinate direction = new GameCoordinate(0,0);
 	int relpx_xMouse;
 	int relpx_yMouse;	
 	
@@ -29,24 +31,38 @@ public class LogicController implements Runnable{
 		while (running){
 			int px_xPan = 0;
 			int px_yPan = 0;
+			int px_xDir = 0;
+			int px_yDir = 0;
 			if (leftHeld){
 				px_xPan -= 2;
+				px_xDir -= 1;
 			}
 			if (rightHeld){
 				px_xPan += 2;
+				px_xDir += 1;
 			}
 			if (upHeld){
 				px_yPan -= 2;
+				px_yDir -= 1;
 			}
 			if (downHeld){
 				px_yPan += 2;
+				px_yDir += 1;
 			}
 			if (px_xPan != 0 || px_yPan != 0){
-				Game.window().screen().panScreen_abspx(px_xPan, px_yPan);
+				//
 			}
+			direction.setX(px_xDir);
+			direction.setY(px_yDir);
+			Game.leader().setDirection(direction); 
+			//System.out.println("xDirection: " + direction.x());
+			//System.out.println("yDirection: " + direction.y());
+
 			for (Entity e: Game.gameEntities()){
 				e.tick();
 			}
+			Game.leader().tick();
+			Game.window().screen().centerScreenAt_abspx(Game.leader().abspx_xPos(), Game.leader().abspx_yPos());
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e1) {
@@ -95,8 +111,8 @@ public class LogicController implements Runnable{
 		int relpx_yClick = clickEvent.getY();
 		
 		GameCoordinate abspx_coords = Game.window().screen().abspx_from_relpx(relpx_xClick, relpx_yClick);
-		for (Entity e: Game.gameEntities()){
-			e.setDestination_abspx(abspx_coords.x(), abspx_coords.y());
+		for (Wanderer w: Game.gameEntities()){
+			w.setDestination_abspx(abspx_coords.x(), abspx_coords.y());
 		}
 		
 	}
