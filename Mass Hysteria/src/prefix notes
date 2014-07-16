@@ -1,0 +1,4 @@
+abspx_		refers to an x or y pixel coordinate relative to the entire map
+absti_		refers to an x or y tile coordinate relative to the entire map
+px_			refers to a measurement in pixels
+ti_			refers to a measurement in number of graphical tiles
