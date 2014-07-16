@@ -14,7 +14,6 @@ public class GraphicsController implements Runnable {
 	}
 	
 	public void run(){
-		int forceQuit = 0;
 		long startTime;
 		long elapsedTime;
 		long toSleep;

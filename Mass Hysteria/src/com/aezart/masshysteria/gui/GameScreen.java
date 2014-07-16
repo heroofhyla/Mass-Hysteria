@@ -7,12 +7,12 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import com.aezart.masshysteria.entity.Entity;
-import com.aezart.masshysteria.input.GameKeyListener;
 import com.aezart.masshysteria.input.GameMouseListener;
 import com.aezart.masshysteria.input.GameMouseMotionListener;
 import com.aezart.masshysteria.system.Game;
 import com.aezart.masshysteria.system.GameCoordinate;
 
+@SuppressWarnings("serial")
 public class GameScreen extends JPanel{
 	public static final int px_DEFAULT_SCREEN_WIDTH = 640;
 	public static final int px_DEFAULT_SCREEN_HEIGHT = 480;

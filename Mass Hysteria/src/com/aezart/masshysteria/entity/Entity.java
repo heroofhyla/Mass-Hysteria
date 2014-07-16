@@ -1,19 +1,14 @@
 package com.aezart.masshysteria.entity;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.MouseInfo;
 import java.awt.image.BufferedImage;
 
-import com.aezart.masshysteria.input.GameMouseListener;
 import com.aezart.masshysteria.system.Game;
 import com.aezart.masshysteria.system.GameCoordinate;
 
 public class Entity {
-	private int tick = 0;
 	private int xDirection = 0;
 	private int yDirection = 0;
-	private int nextChange = 0;
 	private BufferedImage sprite;
 	private GameCoordinate abspx_destination;
 	private boolean hasDestination = false;
@@ -99,7 +94,6 @@ public class Entity {
 		if (abspx_yPos >= Game.currentMap().px_ySize()){
 			abspx_yPos = 0;
 		}
-		tick++;
 		
 	}
 	

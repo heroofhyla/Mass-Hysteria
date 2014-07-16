@@ -1,11 +1,10 @@
 package com.aezart.masshysteria.gui;
 
-import java.awt.event.MouseListener;
-
 import javax.swing.JFrame;
 
 import com.aezart.masshysteria.input.GameKeyListener;
 
+@SuppressWarnings("serial")
 public class GameWindow extends JFrame{
 	private GameScreen screen;
 	private GameKeyListener keyListener;

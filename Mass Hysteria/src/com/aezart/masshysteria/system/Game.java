@@ -13,7 +13,6 @@ import com.aezart.masshysteria.world.GameMap;
 
 public class Game {
 	private static GameWindow window;
-	private static Game game;
 	private static GameMap currentMap;
 	private static ArrayList<Entity> gameEntities = new ArrayList<Entity>();
 	private static LogicController logicController;
