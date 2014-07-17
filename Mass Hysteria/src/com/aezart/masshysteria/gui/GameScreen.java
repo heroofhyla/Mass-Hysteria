@@ -47,11 +47,9 @@ public class GameScreen extends JPanel{
 		
 		//Don't want camera to show stuff past the edges of the screen
 		px_xOffset = Math.max(0, px_xOffset);
-		//Not sure why it's letting me center 10 pixels past the edge of the screen to the right and bottom, so stuck this -10 in to get around it
-		//Will try to come up with a less awful solution later
-		px_xOffset = Math.min(Game.currentMap().px_xSize() - px_DEFAULT_SCREEN_WIDTH - 10, px_xOffset);
+		px_xOffset = Math.min(Game.currentMap().px_xSize() - px_DEFAULT_SCREEN_WIDTH, px_xOffset);
 		px_yOffset = Math.max(0, px_yOffset);
-		px_yOffset = Math.min(Game.currentMap().px_ySize() - px_DEFAULT_SCREEN_HEIGHT - 10, px_yOffset);
+		px_yOffset = Math.min(Game.currentMap().px_ySize() - px_DEFAULT_SCREEN_HEIGHT, px_yOffset);
 		//System.out.println("Recentering view " + px_xOffset + ", " + px_yOffset);
 	}
 	
